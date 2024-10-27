@@ -1,4 +1,4 @@
-package funcionalidad;
+package interfaces;
 import javax.swing.*;
 
 public class VentanaPagar {
@@ -7,7 +7,7 @@ public class VentanaPagar {
         ventanaPagar.setSize(800,500);
         ventanaPagar.setLayout(null);
         ventanaPagar.setLocationRelativeTo(null);
-        ventanaPagar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanaPagar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         // Hacer visible la ventana
         ventanaPagar.setVisible(true);
     }

@@ -1,4 +1,4 @@
-package funcionalidad;
+package interfaces;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ public class VentanaPuntoDeVenta {
     public static void WindowPuntoDeVenta() {
         // Crear una nueva ventana JFrame con el título "Ventana de venta"
         JFrame ventanaVenta = new JFrame("Ventana de venta");
-        ventanaVenta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar la aplicación al cerrar la ventana
+        ventanaVenta.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); // Cerrar la aplicación al cerrar la ventana
         ventanaVenta.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar la ventana en toda la pantalla
         ventanaVenta.setResizable(false); // Deshabilitar la redimensión de la ventana
 

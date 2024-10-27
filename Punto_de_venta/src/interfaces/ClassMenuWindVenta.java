@@ -1,4 +1,4 @@
-package funcionalidad;
+package interfaces;
 
 import javax.swing.*;
 
