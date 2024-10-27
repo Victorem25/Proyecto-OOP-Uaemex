@@ -1,6 +1,7 @@
 package punto_de_venta;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
@@ -31,6 +32,33 @@ public class VentanaPagar {
         //Crear TextArea para el total
         AreaMostrarTotal totalArea = new AreaMostrarTotal();
         ventanaPagar.add(totalArea.crearAreaTotal());
+        
+        //JTextField
+        AreaDeRecibido recibidoArea = new  AreaDeRecibido();
+        ventanaPagar.add(recibidoArea.crearAreaRecibido());
+        
+        //Crear JtextArea para el cambio
+        AreaDeCambio cambioArea = new AreaDeCambio();
+        ventanaPagar.add(cambioArea.crearAreaCambio());
+        
+        //JLabel para cosas no se aqui van todos los labels XD
+        //LabelTotal
+        JLabel totalLabel = new JLabel("Total");
+        totalLabel.setBounds(645, 50, 200, 30);
+        totalLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        ventanaPagar.add(totalLabel);
+        
+        //Label recibido
+        JLabel recibidoLabel = new JLabel("Recibido");
+        recibidoLabel.setBounds(625,190,200,30);
+        recibidoLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        ventanaPagar.add(recibidoLabel);
+        
+        //Label Cambio
+        JLabel cambioLabel = new JLabel("Cambio");
+        cambioLabel.setBounds(620, 270, 200, 30);
+        cambioLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        ventanaPagar.add(cambioLabel);
         
         ventanaPagar.setVisible(true);
     }
@@ -90,14 +118,40 @@ public class VentanaPagar {
         }
     }
     
+    //JTexArea para mostrar el total
     public static class AreaMostrarTotal{
         public JTextArea crearAreaTotal(){
             JTextArea areaTotal = new JTextArea();
-            areaTotal.setBounds(600, 300, 150, 100);
+            areaTotal.setBounds(600, 80, 150, 100);
             areaTotal.setBackground(Color.WHITE);
             Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
             areaTotal.setBorder(border);
             return areaTotal;
         }
     }
+    
+    //JtextField para lo recibidido
+    public static class AreaDeRecibido{
+        public JTextField crearAreaRecibido(){
+            JTextField areaRecibido = new JTextField();
+            areaRecibido.setBounds(600,220,150,30);
+            areaRecibido.setBackground(Color.WHITE);
+            Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+            areaRecibido.setBorder(border);
+            return areaRecibido;
+        }
+    }
+    
+    //JTextFArea para el cambio
+    public static class AreaDeCambio{
+        public JTextArea crearAreaCambio(){
+            JTextArea areaCambio = new JTextArea();
+            areaCambio.setBounds(600, 300, 150, 100);
+            areaCambio.setBackground(Color.WHITE);
+            Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+            areaCambio.setBorder(border);
+            return areaCambio;
+        }
+    }
+    
 }
