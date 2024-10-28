@@ -91,11 +91,11 @@ public class VentanaLogin {
         ventanaLogin.setLocationRelativeTo(null);
         ventanaLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // JLabels para "Iniciar Sesión"
-        JLabel iniciarSecion = new JLabel("Iniciar Sesión");
-        iniciarSecion.setBounds(450, 50, 270, 30);
-        iniciarSecion.setFont(new Font("Arial", Font.ITALIC, 20));
-        ventanaLogin.add(iniciarSecion);
+        // JLabel para "Iniciar Sesión"
+        JLabel iniciarSecion = new JLabel("Iniciar Sesión");//Dar nombre al Label y ponerle un texto
+        iniciarSecion.setBounds(450, 50, 270, 30);//Controlar posicion y tamaño
+        iniciarSecion.setFont(new Font("Arial", Font.ITALIC, 20)); // controlar tipo de letra
+        ventanaLogin.add(iniciarSecion);// añadir a la ventana
 
         // Label usuario
         JLabel usuarioLabel = new JLabel("Usuario");

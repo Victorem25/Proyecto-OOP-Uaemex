@@ -81,7 +81,7 @@ public class VentanaPuntoDeVenta {
             listaProductos = new JList<>(modeloListaProductos);
             listaProductos.setFont(new Font("Arial", Font.BOLD, 20)); // Establecer la fuente de la lista
             this.setViewportView(listaProductos); // Establecer la vista de la lista en el JScrollPane
-            this.setBounds(270, 100, 900, 600); // Establecer posición y tamaño del panel
+            this.setBounds(270, 100, 950, 600); // Establecer posición y tamaño del panel
 
             // Añadir un listener para detectar cambios de selección en la lista
             listaProductos.addListSelectionListener(e -> {
@@ -179,15 +179,28 @@ public class VentanaPuntoDeVenta {
     }
 
     // Clase para manejar la barra de búsqueda
-    public static class BarraBusqueda {
-        public JTextField crearBarra() {
-            JTextField barraBusqueda = new JTextField(); // Crear el campo de texto para la búsqueda
-            barraBusqueda.setBounds(650, 20, 200, 30); // Establecer posición y tamaño del campo
-
-            // Añadir un listener para detectar la acción de entrada de texto
-            barraBusqueda.addActionListener(e -> {
-                String producto = barraBusqueda.getText(); // Obtener el texto ingresado
-                if (!producto.isEmpty()) { // Si el campo no está vacío
+// Clase para manejar la barra de búsqueda
+public static class BarraBusqueda {
+    public JTextField crearBarra() {
+        JTextField barraBusqueda = new JTextField(); // Crear el campo de texto para la búsqueda
+        barraBusqueda.setBounds(650, 20, 200, 30); // Establecer posición y tamaño del campo
+        
+        // Añadir un listener para detectar la acción de entrada de texto
+        barraBusqueda.addActionListener(e -> {
+            String producto = barraBusqueda.getText().trim(); // Obtener el texto ingresado y eliminar espacios en blanco
+            if (!producto.isEmpty()) { // Si el campo no está vacío
+                // Verificar si el producto ya existe en la lista
+                boolean existe = false;
+                for (int i = 0; i < modeloListaProductos.size(); i++) {
+                    if (modeloListaProductos.getElementAt(i).contains(producto)) {
+                        existe = true;
+                        break;
+                    }
+                }
+                
+                if (existe) {
+                    JOptionPane.showMessageDialog(null, "El producto ya existe en la lista", "Error", JOptionPane.WARNING_MESSAGE); // Mostrar mensaje de error
+                } else {
                     // Solicitar la cantidad deseada al usuario
                     String cantidadStr = JOptionPane.showInputDialog(null, "Ingresa la cantidad para el producto:");
                     try {
@@ -205,21 +218,30 @@ public class VentanaPuntoDeVenta {
                         JOptionPane.showMessageDialog(null, "Cantidad no válida", "Error", JOptionPane.ERROR_MESSAGE); // Mensaje de error si la entrada no es un número
                     }
                 }
-            });
-            return barraBusqueda; // Devolver el campo de búsqueda creado
-        }
+            }
+        });
+        return barraBusqueda; // Devolver el campo de búsqueda creado
     }
+}
+
 
     // Clase para manejar el panel de cantidad de productos
     public static class PanelCantProductos extends JScrollPane {
-        private final JPanel panelCantTotalproducto; // Panel para mostrar la cantidad total de productos
+        private final JList<String> listaProducts; // Lista para mostrar los productos
 
+        // Constructor para inicializar el panel
         public PanelCantProductos() {
-            panelCantTotalproducto = new JPanel(); // Inicializar el panel
-            panelCantTotalproducto.setLayout(new BorderLayout()); // Establecer diseño de borde
-            panelCantTotalproducto.setBackground(Color.LIGHT_GRAY); // Establecer color de fondo
-            this.setViewportView(panelCantTotalproducto); // Establecer la vista del panel en el JScrollPane
+            // Inicializar la lista de productos utilizando el modelo compartido
+            listaProducts = new JList<>(VentanaPuntoDeVenta.modeloListaProductos);
+            listaProducts.setFont(new Font("Arial", Font.BOLD, 16)); // Establecer la fuente de la lista
+            this.setViewportView(listaProducts); // Agregar la lista al JScrollPane
             this.setBounds(1230, 100, 300, 600); // Establecer posición y tamaño del panel
+            this.setBackground(Color.WHITE); // Establecer color de fondo
+        }
+    
+        // Método opcional para actualizar la lista si es necesario
+        public void actualizarLista() {
+            listaProducts.setListData((String[]) VentanaPuntoDeVenta.modeloListaProductos.toArray());
         }
     }
 
@@ -271,7 +293,8 @@ public class VentanaPuntoDeVenta {
     // Clase para manejar el botón de cancelar
     public static class ButtonCancelar {
         private final JFrame ventanaVenta; // Referencia a la ventana de venta
-
+        
+        
         public ButtonCancelar(JFrame ventanaVenta) {
             this.ventanaVenta = ventanaVenta; // Inicializar la referencia
         }
