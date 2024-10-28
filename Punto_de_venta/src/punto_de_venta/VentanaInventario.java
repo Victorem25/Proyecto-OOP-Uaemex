@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class VentanaInventario {
 
     private JLabel etiquetaFiltroSeleccionado;
@@ -25,6 +26,7 @@ public class VentanaInventario {
         WindowInventario();
         cargarProductos();
     }
+
 
     public void WindowInventario() {
         JFrame Ventana_de_Inventario = new JFrame("Ventana de inventario");
@@ -131,14 +133,25 @@ public class VentanaInventario {
 
         botonBuscar.addActionListener(e -> {
             String busqueda = campoBusqueda.getText();
-            productosFiltrados = buscarProductos(busqueda);
-            if (!productosFiltrados.isEmpty()) {
-                modeloTabla.setRowCount(0);
-                for (Object[] producto : productosFiltrados) {
-                    modeloTabla.addRow(producto);
+            List<Object[]> resultados;
+
+            // Busca en los productos filtrados o en la lista completa
+            if (productosFiltrados != null && !productosFiltrados.isEmpty()) {
+                resultados = buscarProductosFiltrados(busqueda);
+            } else {
+                resultados = buscarProductos(busqueda);
+            }
+
+            // Actualiza la tabla con los resultados encontrados o muestra un mensaje si no se encontraron
+            modeloTabla.setRowCount(0); // Limpiar la tabla antes de mostrar nuevos resultados
+
+            if (!resultados.isEmpty()) {
+                for (Object[] producto : resultados) {
+                    modeloTabla.addRow(producto); // Añadir producto encontrado a la tabla
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontraron productos.", "Resultado de búsqueda", JOptionPane.INFORMATION_MESSAGE);
+                // Añadir una fila con el mensaje "Productos no encontrados"
+                modeloTabla.addRow(new Object[]{"", "Productos no encontrados", "", "", "", "", ""});
             }
         });
 
@@ -146,6 +159,17 @@ public class VentanaInventario {
         Ventana_de_Inventario.setSize(800, 600);
         Ventana_de_Inventario.setVisible(true);
     }
+    private List<Object[]> buscarProductosFiltrados(String busqueda) {
+        List<Object[]> resultados = new ArrayList<>();
+        for (Object[] producto : productosFiltrados) {
+            if (producto[1].toString().toLowerCase().contains(busqueda.toLowerCase()) ||
+                    producto[2].toString().toLowerCase().contains(busqueda.toLowerCase())) {
+                resultados.add(producto);
+            }
+        }
+        return resultados;
+    }
+
 
     private void cargarProductos() {
         productos = new ArrayList<>();
@@ -184,48 +208,58 @@ public class VentanaInventario {
     private List<Object[]> buscarProductos(String busqueda) {
         List<Object[]> resultados = new ArrayList<>();
         for (Object[] producto : productos) {
-            for (Object dato : producto) {
-                if (dato.toString().toLowerCase().contains(busqueda.toLowerCase())) {
-                    resultados.add(producto);
-                    break;
+            // Comprobamos si el nombre o el código contienen la búsqueda
+            if (producto[1].toString().toLowerCase().contains(busqueda.toLowerCase()) ||
+                    producto[2].toString().toLowerCase().contains(busqueda.toLowerCase())) {
+                resultados.add(producto);
+            }
+        } // Cierra el bloque for
+        return resultados; // Ahora está en el lugar correcto
+    }
+
+
+        private List<Object[]> filtrarDatos(String tipoFiltro, String valorFiltro) {
+            List<Object[]> productosFiltrados = new ArrayList<>();
+            for (Object[] producto : productos) {
+                switch (tipoFiltro) {
+                    case "proveedor":
+                        if (producto[4].toString().equals(valorFiltro)) {
+                            productosFiltrados.add(producto);
+                        }
+                        break;
+                    case "existencias":
+                        int stock = Integer.parseInt(producto[6].toString());
+                        if (valorFiltro.equals("Menos de 10") && stock < 10 ||
+                                valorFiltro.equals("10 a 50") && stock >= 10 && stock <= 50 ||
+                                valorFiltro.equals("Más de 50") && stock > 50) {
+                            productosFiltrados.add(producto);
+                        }
+                        break;
+                    case "precio":
+                        String[] rangos = valorFiltro.split(",");
+                        if (rangos.length == 2) { // Asegúrate de que hay exactamente dos elementos
+                            try {
+                                double minPrecio = Double.parseDouble(rangos[0].trim());
+                                double maxPrecio = Double.parseDouble(rangos[1].trim());
+                                double precio = Double.parseDouble(producto[3].toString());
+                                if (precio >= minPrecio && precio <= maxPrecio) {
+                                    productosFiltrados.add(producto);
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Error en el formato del precio: " + e.getMessage());
+                            }
+                        }
+                        break;
+                    default:
+                        System.out.println("Tipo de filtro no reconocido: " + tipoFiltro);
+                        break;
                 }
             }
+            return productosFiltrados;
         }
-        return resultados;
-    }
 
-    private List<Object[]> filtrarDatos(String tipoFiltro, String valorFiltro) {
-        List<Object[]> productosFiltrados = new ArrayList<>();
-        for (Object[] producto : productos) {
-            switch (tipoFiltro) {
-                case "proveedor":
-                    if (producto[4].toString().equals(valorFiltro)) {
-                        productosFiltrados.add(producto);
-                    }
-                    break;
-                case "existencias":
-                    int stock = Integer.parseInt(producto[6].toString());
-                    if (valorFiltro.equals("Menos de 10") && stock < 10 ||
-                            valorFiltro.equals("10 a 50") && stock >= 10 && stock <= 50 ||
-                            valorFiltro.equals("Más de 50") && stock > 50) {
-                        productosFiltrados.add(producto);
-                    }
-                    break;
-                case "precio":
-                    String[] rangos = valorFiltro.split(",");
-                    double minPrecio = Double.parseDouble(rangos[0].trim());
-                    double maxPrecio = Double.parseDouble(rangos[1].trim());
-                    double precio = Double.parseDouble(producto[3].toString());
-                    if (precio >= minPrecio && precio <= maxPrecio) {
-                        productosFiltrados.add(producto);
-                    }
-                    break;
-            }
-        }
-        return productosFiltrados;
-    }
 
-    private void actualizarTabla() {
+        private void actualizarTabla() {
         modeloTabla.setRowCount(0);
         for (Object[] producto : productosFiltrados) {
             modeloTabla.addRow(producto);
