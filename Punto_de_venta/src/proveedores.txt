@@ -1,10 +1,30 @@
-Grupo Bimbo,2024-11-05,contacto@bimbo.com
-PepsiCo,2024-11-07,ventas@pepsico.com.mx
-Nestlé México,2024-11-08,servicio.cliente@nestle.com
-Grupo Lala,2024-11-06,clientes@grupolala.com
-Sigma Alimentos,2024-11-09,distribucion@sigma.com.mx
-La Moderna,2024-11-10,info@lamoderna.com.mx
-Herdez,2024-11-12,contacto@herdez.com
-Gamesa,2024-11-04,clientes@gamesa.com.mx
-P&G México,2024-11-11,atencion@pg.com.mx
-Coca-Cola FEMSA,2024-11-03,soporte@coca-cola.com.mx
+Bimbo,2024-10-30,contacto@bimbo.com
+Barcel,2024-11-05,contacto@barcel.com
+Nestlé,2024-11-15,contacto@nestle.com.mx
+Pepsi,2024-12-10,contacto@pepsi.com
+Grupo Lala,2024-11-20,contacto@lalamilk.com
+Alsea (Starbucks Domino's),2024-10-25,contacto@alsea.com
+La Costeña,2024-11-30,contacto@lacostena.com
+Jugos del Valle,2024-11-12,contacto@jugosdelvalle.com
+Fábrica de Chocolates La Fama,2024-12-05,contacto@lafama.com
+Unilever,2024-10-28,contacto@unilever.com
+Maseca,2024-11-22,contacto@maseca.com
+Procter & Gamble,2024-11-19,contacto@pg.com
+Bachoco,2024-12-03,contacto@bachoco.com.mx
+Sigma Alimentos,2024-11-18,contacto@sigma.com.mx
+Herdez,2024-12-15,contacto@herdez.com
+Cemex,2024-10-31,contacto@cemex.com
+Productos La Silla,2024-11-08,contacto@lasilla.com
+Frisa,2024-11-25,contacto@frisa.com
+Salsa Valentina,2024-12-07,contacto@valentina.com
+Cereales y Snacks,2024-10-29,contacto@cerealesysnacks.com
+Bebidas y Refrescos del Norte,2024-11-13,contacto@bebidasnorte.com
+Distribuidora de Lácteos,2024-12-02,contacto@lacteos.com
+Alimentos Naturales,2024-11-17,contacto@naturales.com
+Nutrisa,2024-12-12,contacto@nutrisa.com
+Distribuidor de Vinos,2024-11-04,contacto@vinos.com
+Carnes Selectas,2024-12-11,contacto@carnesselectas.com
+Empresas de Chocolates La Raza,2024-10-27,contacto@laraza.com
+Abarrotes y Más,2024-11-24,contacto@abarrotesymas.com
+Distribuidor de Frutas y Verduras,2024-12-09,contacto@frutasyverduras.com
+Salsas y Condimentos,2024-10-26,contacto@salsasycondimentos.com
