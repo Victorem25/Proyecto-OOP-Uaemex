@@ -7,6 +7,7 @@ public class Punto_de_venta {
         // VentanaPuntoDeVenta.WindowPuntoDeVenta();
 
         // Crear una instancia de VentanaInventario
-        new VentanaInventario(); // Esto llamará al constructor que a su vez llama a WindowInventario()
+        //new VentanaInventario();
+        new VentanaProveedores();// Esto llamará al constructor que a su vez llama a WindowInventario()
     }
 }

@@ -28,7 +28,10 @@ public class VentanaInventario {
     }
 
 
+
     public void WindowInventario() {
+
+
         JFrame Ventana_de_Inventario = new JFrame("Ventana de inventario");
         Ventana_de_Inventario.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

@@ -1,9 +1,0 @@
-imagenes/producto1.jpg,Leche,001,20.50,Proveedor A,2025-12-31,10
-producto2.jpg,Pan,002,15.00,Proveedor B,2024-11-15,10
-producto3.jpg,Arroz,003,30.00,Proveedor C,2026-01-10,10
-producto4.jpg,jamon,004,20.50,Proveedor A,2025-12-31,10
-producto5.jpg,Crema,005,15.00,Proveedor B,2024-11-15,10
-producto6.jpg,Queso,006,30.00,Proveedor C,2026-01-10,10
-producto7.jpg,Leche,007,20.50,Proveedor A,2025-12-31,10
-producto8.jpg,Jugo,008,15.00,Proveedor B,2024-11-15,10
-producto9.jpg,Yogurth,009,30.00,Proveedor C,2026-01-10,10

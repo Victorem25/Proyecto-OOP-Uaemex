@@ -1,0 +1,10 @@
+Grupo Bimbo,2024-11-05,contacto@bimbo.com
+PepsiCo,2024-11-07,ventas@pepsico.com.mx
+Nestlé México,2024-11-08,servicio.cliente@nestle.com
+Grupo Lala,2024-11-06,clientes@grupolala.com
+Sigma Alimentos,2024-11-09,distribucion@sigma.com.mx
+La Moderna,2024-11-10,info@lamoderna.com.mx
+Herdez,2024-11-12,contacto@herdez.com
+Gamesa,2024-11-04,clientes@gamesa.com.mx
+P&G México,2024-11-11,atencion@pg.com.mx
+Coca-Cola FEMSA,2024-11-03,soporte@coca-cola.com.mx
